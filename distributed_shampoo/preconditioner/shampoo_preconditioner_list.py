@@ -1673,7 +1673,7 @@ class EigenvalueCorrectedShampooPreconditionerList(
                 kronecker_factors.corrected_eigenvalues.mul_(self._beta2)
 
             # NOTE: The case when self._weighting_factor == 1.0 is not well tested and might not be stable.
-            print(f"{self._weighting_factor=}")
+            # print(f"{self._weighting_factor=}")
             kronecker_factors.corrected_eigenvalues.addcmul_(
                 grad, grad, value=self._weighting_factor
             )
