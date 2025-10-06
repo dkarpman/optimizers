@@ -192,7 +192,7 @@ class DistributorInterface(ABC):
         for param in params:
             # Obtain blocks for each parameter after merging.
             blocks_within_param = multi_dim_split(
-                param.view(merge_dims(tensor_shape=param.size())),
+                param.reshape(merge_dims(tensor_shape=param.size())),
                 self._param_group[MAX_PRECONDITIONER_DIM],
             )
 
@@ -273,7 +273,7 @@ class DistributorInterface(ABC):
 
             # Obtain blocks for each gradient after merging.
             blocks_within_grad = multi_dim_split(
-                grad.view(merge_dims(tensor_shape=grad.size())),
+                grad.reshape(merge_dims(tensor_shape=grad.size())),
                 self._param_group[MAX_PRECONDITIONER_DIM],
             )
             # Generate block-to-parameter metadata and extend blocked parameters list.
